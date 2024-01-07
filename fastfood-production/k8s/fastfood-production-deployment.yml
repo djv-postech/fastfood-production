@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastfood-deployment
+  labels:
+    app: fastfood
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: fastfood
+      labels:
+        app: fastfood
+    spec:
+      containers:
+        - name: fastfood-tech-challenge-container
+          image: soatpostech/fastfood:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: MONGO_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: fastfood-secret-opaque
+                  key: MONGO_HOST
+
+            - name: MONGO_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: fastfood-secret-opaque
+                  key: MONGO_USERNAME
+
+            - name: MONGO_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: fastfood-secret-opaque
+                  key: MONGO_PASSWORD
+
+            - name: MONGO_DB
+              valueFrom:
+                secretKeyRef:
+                  name: fastfood-secret-opaque
+                  key: MONGO_DB
+            
+            - name: MP_PAYMENT_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: fastfood-secret-opaque
+                  key: MP_PAYMENT_TOKEN
+
+            - name: MP_USER_ID
+              valueFrom:
+                secretKeyRef:
+                  name: fastfood-secret-opaque
+                  key: MP_USER_ID
+
+            - name: MP_EXTERNAL_POS_ID
+              valueFrom:
+                secretKeyRef:
+                  name: fastfood-secret-opaque
+                  key: MP_EXTERNAL_POS_ID
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/
+              port: 8080
+            periodSeconds: 10
+            failureThreshold: 3
+            initialDelaySeconds: 30
+          readinessProbe:
+             httpGet:
+               path: /actuator/health
+               port: 8080
+             periodSeconds: 10
+             failureThreshold: 5
+             initialDelaySeconds: 10
+          resources:
+            requests:
+              cpu: 10m
+  selector:
+    matchLabels:
+      app: fastfood

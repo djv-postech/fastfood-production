@@ -1,0 +1,29 @@
+#Porta onde a aplicação será executada
+server:
+  port: 8090
+
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+    listener:
+      simple:
+        retry:
+          enabled: true
+          max-attempts: 3
+          initial-interval: 5000
+          multiplier: 2
+          max-interval: 300000
+
+  data:
+    mongodb:
+      host: ${MONGO_HOST:localhost}
+      username: tech-challenge
+      password: tech-challenge-123
+      database: ${MONGO_DB:db_pedidos_producao}
+      port: 27017
+      authentication-database: admin
+
