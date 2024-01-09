@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: fastfood-mongo-statefulset
+  name: fastfood-production-mongo-statefulset
   labels:
-    app: fastfood-mongo
+    app: fastfood-production-mongo
 spec:
   replicas: 1
   template:
     metadata:
-      name: fastfood-mongo
+      name: fastfood-production-mongo
       labels:
-        app: fastfood-mongo
+        app: fastfood-production-mongo
     spec:
       containers:
-        - name: fastfood-mongo-container
+        - name: fastfood-production-mongo-container
           image: mongo:4.0.3
           args: ["--dbpath", "data/db"]
           ports:
@@ -22,27 +22,22 @@ spec:
             - name: MONGO_INITDB_ROOT_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: fastfood-mongo-secret-opaque
+                  name: fastfood-production-mongo-secret-opaque
                   key: MONGO_INITDB_ROOT_USERNAME
 
             - name: MONGO_INITDB_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: fastfood-mongo-secret-opaque
+                  name: fastfood-production-mongo-secret-opaque
                   key: MONGO_INITDB_ROOT_PASSWORD
 
             - name: MONGO_INITDB_DATABASE
               valueFrom:
                 secretKeyRef:
-                  name: fastfood-mongo-secret-opaque
+                  name: fastfood-production-mongo-secret-opaque
                   key: MONGO_INITDB_DATABASE
 
-            - name: ME_CONFIG_MONGODB_ENABLE_ADMIN
-              valueFrom:
-                secretKeyRef:
-                  name: fastfood-mongo-secret-opaque
-                  key: ME_CONFIG_MONGODB_ENABLE_ADMIN
   selector:
     matchLabels:
-      app: fastfood-mongo
-  serviceName: fastfood-mongo-service
+      app: fastfood-production-mongo
+  serviceName: fastfood-production-mongo-service

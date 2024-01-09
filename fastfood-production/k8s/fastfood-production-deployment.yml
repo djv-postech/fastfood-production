@@ -1,82 +1,82 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fastfood-deployment
+  name: fastfood-production-deployment
   labels:
-    app: fastfood
+    app: fastfood-production
 spec:
   replicas: 1
   template:
     metadata:
-      name: fastfood
+      name: fastfood-production
       labels:
-        app: fastfood
+        app: fastfood-production
     spec:
       containers:
-        - name: fastfood-tech-challenge-container
-          image: soatpostech/fastfood:latest
+        - name: fastfood-production-container
+          image: soatpostech/fastfood-production:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 8080
+            - containerPort: 8082
           env:
             - name: MONGO_HOST
               valueFrom:
                 secretKeyRef:
-                  name: fastfood-secret-opaque
+                  name: fastfood-production-secret-opaque
                   key: MONGO_HOST
 
             - name: MONGO_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: fastfood-secret-opaque
+                  name: fastfood-production-secret-opaque
                   key: MONGO_USERNAME
 
             - name: MONGO_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: fastfood-secret-opaque
+                  name: fastfood-production-secret-opaque
                   key: MONGO_PASSWORD
 
             - name: MONGO_DB
               valueFrom:
                 secretKeyRef:
-                  name: fastfood-secret-opaque
+                  name: fastfood-production-secret-opaque
                   key: MONGO_DB
             
-            - name: MP_PAYMENT_TOKEN
+            - name: RABBIT_HOST
               valueFrom:
                 secretKeyRef:
-                  name: fastfood-secret-opaque
-                  key: MP_PAYMENT_TOKEN
+                  name: fastfood-production-secret-opaque
+                  key: RABBIT_HOST
 
-            - name: MP_USER_ID
+            - name: RABBIT_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: fastfood-secret-opaque
-                  key: MP_USER_ID
+                  name: fastfood-production-secret-opaque
+                  key: RABBIT_USERNAME
 
-            - name: MP_EXTERNAL_POS_ID
+            - name: RABBIT_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: fastfood-secret-opaque
-                  key: MP_EXTERNAL_POS_ID
-          livenessProbe:
-            httpGet:
-              path: /actuator/health/
-              port: 8080
-            periodSeconds: 10
-            failureThreshold: 3
-            initialDelaySeconds: 30
-          readinessProbe:
-             httpGet:
-               path: /actuator/health
-               port: 8080
-             periodSeconds: 10
-             failureThreshold: 5
-             initialDelaySeconds: 10
-          resources:
-            requests:
-              cpu: 10m
+                  name: fastfood-production-secret-opaque
+                  key: RABBIT_PASSWORD
+#          livenessProbe:
+#            httpGet:
+#              path: /actuator/health/
+#              port: 8080
+#            periodSeconds: 10
+#            failureThreshold: 3
+#            initialDelaySeconds: 30
+#          readinessProbe:
+#             httpGet:
+#               path: /actuator/health
+#               port: 8080
+#             periodSeconds: 10
+#             failureThreshold: 5
+#             initialDelaySeconds: 10
+#          resources:
+#            requests:
+#              cpu: 10m
   selector:
     matchLabels:
-      app: fastfood
+      app: fastfood-production

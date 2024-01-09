@@ -1,13 +1,13 @@
 #Porta onde a aplicação será executada
 server:
-  port: 8090
+  port: 8082
 
 spring:
   rabbitmq:
-    host: localhost
+    host: ${RABBIT_HOST:localhost}
     port: 5672
-    username: guest
-    password: guest
+    username: ${RABBIT_USERNAME:guest}
+    password: ${RABBIT_PASSWORD:guest}
 
     listener:
       simple:
@@ -21,8 +21,8 @@ spring:
   data:
     mongodb:
       host: ${MONGO_HOST:localhost}
-      username: tech-challenge
-      password: tech-challenge-123
+      username: ${MONGO_USERNAME:product-production}
+      password: ${MONGO_PASSWORD:product-production-123}
       database: ${MONGO_DB:db_pedidos_producao}
       port: 27017
       authentication-database: admin
