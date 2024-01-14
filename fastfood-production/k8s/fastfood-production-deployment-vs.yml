@@ -1,0 +1,13 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: fastfood-production-virtual-service
+spec:
+  hosts:
+    - fastfood-production-service
+  http:
+    - route:
+        - destination:
+            host: fastfood-production-service
+            port:
+              number: 8082

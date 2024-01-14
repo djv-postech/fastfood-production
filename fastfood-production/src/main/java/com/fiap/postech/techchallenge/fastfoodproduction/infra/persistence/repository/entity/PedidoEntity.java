@@ -14,7 +14,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Builder
 @Document(collection = "pedidos")
 public class PedidoEntity {
 
@@ -38,13 +37,28 @@ public class PedidoEntity {
   }
 
   public PedidoEntity(
-      String numeroPedido,
       Cliente cliente,
       List<Produto> produtos,
       BigDecimal valorTotal,
       Pagamento pagamento,
       StatusPedido statusPedido,
       LocalDateTime dataCriacaoPedido) {
+    this.cliente = cliente;
+    this.produtos = produtos;
+    this.valorTotal = valorTotal;
+    this.pagamento = pagamento;
+    this.statusPedido = statusPedido;
+    this.dataCriacaoPedido = dataCriacaoPedido;
+  }
+
+  public PedidoEntity(
+          String numeroPedido,
+          Cliente cliente,
+          List<Produto> produtos,
+          BigDecimal valorTotal,
+          Pagamento pagamento,
+          StatusPedido statusPedido,
+          LocalDateTime dataCriacaoPedido) {
     this.numeroPedido = numeroPedido;
     this.cliente = cliente;
     this.produtos = produtos;

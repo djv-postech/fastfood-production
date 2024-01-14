@@ -21,24 +21,23 @@ import static com.fiap.postech.techchallenge.fastfoodproduction.infra.config.amq
 @RequestMapping("/producao")
 public class PedidoProducaoController {
 
-    @Autowired
-    private RabbitTemplate rabbitTemplate;
+    private final RabbitTemplate rabbitTemplate;
     private final ListagemDePedidoPorNumeroDePedido listarPedidoPorNumeroPedido;
     private final ListagemDePedidoPorStatus listarPedidoPorStatus;
     private final ListagemDePedidoOrdenadosPorRecebimentoEStatus listagemDePedidoOrdenadosPorRecebimentoEStatus;
     private final AtualizacaoDePedido atualizacaoDePedido;
 
     public PedidoProducaoController(
-            CadastroDePedido cadastroDePedido,
             ListagemDePedidoPorNumeroDePedido listarPedidoPorNumeroPedido,
             ListagemDePedidoPorStatus listarPedidoPorStatus,
             ListagemDePedidoOrdenadosPorRecebimentoEStatus listagemDePedidoOrdenadosPorRecebimentoEStatus,
-            AtualizacaoDePedido atualizacaoDePedido) {
+            AtualizacaoDePedido atualizacaoDePedido, RabbitTemplate rabbitTemplate) {
         this.listarPedidoPorNumeroPedido = listarPedidoPorNumeroPedido;
         this.listarPedidoPorStatus = listarPedidoPorStatus;
         this.listagemDePedidoOrdenadosPorRecebimentoEStatus =
                 listagemDePedidoOrdenadosPorRecebimentoEStatus;
         this.atualizacaoDePedido = atualizacaoDePedido;
+        this.rabbitTemplate = rabbitTemplate;
     }
 
     @PostMapping("/pedido")
@@ -78,7 +77,7 @@ public class PedidoProducaoController {
     @PutMapping("/pedido/{numeroPedido}/{status}")
     public ResponseEntity<DadosPedido> atualizarStatusPedido(
             @PathVariable String numeroPedido, @PathVariable("status") final StatusPedido statusPedido) {
-        Pedido pedido = atualizacaoDePedido.atualizarPedido(numeroPedido, statusPedido);
+        Pedido pedido = atualizacaoDePedido.atualizarStatusPedido(numeroPedido, statusPedido);
         return ResponseEntity.ok(new DadosPedido(pedido));
     }
 

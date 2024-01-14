@@ -36,6 +36,10 @@ public record DadosCadastroPedido(
     @NotNull @JsonSerialize(using = LocalDateTimeSerializer.class)
     LocalDateTime dataCriacaoPedido) {
 
+//    public DadosCadastroPedido(String cliente, List<DadosCadastroProduto> dadosCadastroProdutos, BigDecimal valorTotal, DadosCadastroPagamento dadosCadastroPagamento,
+//                               StatusPedido statusPedido){
+//        this(cliente, dadosCadastroProdutos, valorTotal, dadosCadastroPagamento, statusPedido);
+//    }
 
   public Pedido toPedido() {
     return new Pedido(

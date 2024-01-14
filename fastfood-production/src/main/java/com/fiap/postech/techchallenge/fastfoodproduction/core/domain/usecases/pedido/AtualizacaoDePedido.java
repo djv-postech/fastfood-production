@@ -14,13 +14,13 @@ public class AtualizacaoDePedido {
     this.pedidoRepository = pedidoRepository;
   }
 
-  public Pedido atualizarPedido(String numeroPedido, StatusPedido statusPedido) {
+  public Pedido atualizarStatusPedido(String numeroPedido, StatusPedido statusPedido) {
     final Pedido pedido = pedidoRepository.listarPedidoPorNumeroPedido(numeroPedido);
     pedido.setStatus(statusPedido);
     return pedidoRepository.atualizarPedido(pedido);
   }
 
-  public Pedido atualizarPedido(String numeroPedido, Pagamento pagamento) {
+  public Pedido atualizarStatusPedido(String numeroPedido, Pagamento pagamento) {
     final Pedido pedido = pedidoRepository.listarPedidoPorNumeroPedido(numeroPedido);
     StatusPedido statusPedido =
         pagamento.getStatusPagamento().equals(StatusPagamento.APROVADO)

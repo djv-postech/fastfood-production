@@ -1,0 +1,13 @@
+resources:
+  - fastfood-production-secrets.yml
+  - fastfood-production-mongo-secrets.yml
+  - fastfood-production-rabbit-secrets.yml
+  - fastfood-production-svc.yml
+  - fastfood-production-mongo-svc.yml
+  - fastfood-production-rabbit-svc.yml
+  - fastfood-production-deployment.yml
+  - fastfood-production-mongo-statefulset.yml
+  - fastfood-production-rabbit-statefulset.yml
+  - fastfood-production-deployment-vs.yml
+  - fastfood-production-mongo-statefulset-vs.yml
+  - fastfood-production-rabbit-statefulset-vs.yml

@@ -39,6 +39,12 @@ public class Produto {
         this.preco = preco;
     }
 
+    public Produto(String nome, String descricao, Categoria categoria) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.categoria = categoria;
+    }
+
 
     public String getId() {
         return id;

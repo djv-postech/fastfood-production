@@ -17,4 +17,9 @@ public class PedidoConverter {
         pedidoEntity.getStatusPedido(),
         pedidoEntity.getDataCriacaoPedido());
   }
+
+  public PedidoEntity convertToEntity(Pedido pedido) {
+    return new PedidoEntity(pedido.getCliente(), pedido.getProdutos(), pedido.getValorTotal(), pedido.getPagamento(), pedido.getStatusPedido(),
+            pedido.getDataCriacaoPedido());
+  }
 }

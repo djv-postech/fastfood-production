@@ -3,6 +3,7 @@ package com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.p
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.cliente.Cliente;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pagamento.Pagamento;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.produto.Produto;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import java.math.BigDecimal;
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @ToString
+@EqualsAndHashCode
 public class Pedido {
 
   private String numeroPedido;

@@ -1,6 +1,9 @@
 package com.fiap.postech.techchallenge.fastfoodproduction.application.config.beans;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pedido.PedidoRepository;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.usecases.pedido.*;
+import com.fiap.postech.techchallenge.fastfoodproduction.infra.persistence.repository.PedidoRepositoryImpl;
+import com.fiap.postech.techchallenge.fastfoodproduction.infra.persistence.repository.PedidoRepositoryMongo;
+import com.fiap.postech.techchallenge.fastfoodproduction.infra.persistence.repository.converter.PedidoConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -38,4 +41,10 @@ public class PedidoBeanConfiguration {
   public ListagemDePedidoPorStatus listagemDePedidoPorStatus() {
     return new ListagemDePedidoPorStatus(pedidoRepository);
   }
+
+  @Bean
+  public PedidoConverter pedidoConverter(){
+    return new PedidoConverter();
+  }
+
 }
