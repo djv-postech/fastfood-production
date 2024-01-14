@@ -76,7 +76,7 @@ public class PedidoProducaoController {
     }
 
     @Operation(summary = "Atualizar status do pedido")
-    @PutMapping("/pedido/{numeroPedido}/{status}")
+    @PutMapping("/pedido/{numeroPedido}/statusPedido/{status}")
     public ResponseEntity<DadosPedido> atualizarStatusPedido(
             @PathVariable String numeroPedido, @PathVariable("status") final StatusPedido statusPedido) {
         Pedido pedido = atualizacaoDePedido.atualizarPedido(numeroPedido, statusPedido);
@@ -84,9 +84,9 @@ public class PedidoProducaoController {
     }
 
     @Operation(summary = "Atualizar status do pagamento no pedido")
-    @PutMapping("/pedido/{numeroPedido}/{statusPagamento}")
+    @PutMapping("/pedido/{numeroPedido}/statusPagamento/{statusPagamento}")
     public ResponseEntity<DadosPedido> atualizarStatusPagamentoPedido(
-            @PathVariable String numeroPedido, @PathVariable("status") final StatusPagamento statusPagamento) {
+            @PathVariable String numeroPedido, @PathVariable("statusPagamento") final StatusPagamento statusPagamento) {
         Pedido pedido = atualizacaoDePedido.atualizarPedido(numeroPedido, statusPagamento);
         return ResponseEntity.ok(new DadosPedido(pedido));
     }
