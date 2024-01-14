@@ -1,6 +1,7 @@
 package com.fiap.postech.techchallenge.fastfoodproduction.application.amqp;
 
 import com.fiap.postech.techchallenge.fastfoodproduction.application.records.DadosCadastroPedido;
+import com.fiap.postech.techchallenge.fastfoodproduction.application.records.DadosPedido;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.usecases.pedido.CadastroDePedido;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
@@ -17,7 +18,7 @@ public class PedidoProducaoListener {
     }
 
     @RabbitListener(queues = PEDIDO_PRODUCAO_COZINHA_QUEUE)
-    public void cadastrarPedido(DadosCadastroPedido dadosCadastroPedido){
-          cadastroDePedido.cadastrarPedido(dadosCadastroPedido.toPedido());
+    public void cadastrarPedido(DadosPedido dadosPedido){
+          cadastroDePedido.cadastrarPedido(dadosPedido.convertToPedido());
     }
 }

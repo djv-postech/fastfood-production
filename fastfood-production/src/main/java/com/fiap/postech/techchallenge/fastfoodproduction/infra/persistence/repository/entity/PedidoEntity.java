@@ -26,7 +26,7 @@ public class PedidoEntity {
   private Pagamento pagamento;
   private StatusPedido statusPedido;
   private LocalDateTime dataCriacaoPedido;
-
+  private String qrCode;
   public PedidoEntity(Pedido pedido) {
     this.numeroPedido = pedido.getNumeroPedido();
     this.cliente = pedido.getCliente();
@@ -35,6 +35,7 @@ public class PedidoEntity {
     this.pagamento = pedido.getPagamento();
     this.statusPedido = pedido.getStatusPedido();
     this.dataCriacaoPedido = pedido.getDataCriacaoPedido();
+    this.qrCode = pedido.getQrCode();
   }
 
   public PedidoEntity(
@@ -44,7 +45,8 @@ public class PedidoEntity {
       BigDecimal valorTotal,
       Pagamento pagamento,
       StatusPedido statusPedido,
-      LocalDateTime dataCriacaoPedido) {
+      LocalDateTime dataCriacaoPedido,
+      String qrCode) {
     this.numeroPedido = numeroPedido;
     this.cliente = cliente;
     this.produtos = produtos;
@@ -52,6 +54,7 @@ public class PedidoEntity {
     this.pagamento = pagamento;
     this.statusPedido = statusPedido;
     this.dataCriacaoPedido = dataCriacaoPedido;
+    this.qrCode = qrCode;
   }
 
   public PedidoEntity() {}
@@ -79,6 +82,11 @@ public class PedidoEntity {
   public LocalDateTime getDataCriacaoPedido() {
     return dataCriacaoPedido;
   }
+
+  public String getQrCode() {
+    return qrCode;
+  }
+
 
   public Cliente getCliente() {
     return cliente;
