@@ -12,20 +12,6 @@ public class Pagamento {
   private LocalDateTime dataEHorarioPagamento;
   private StatusPagamento statusPagamento;
 
-  public Pagamento(
-      String id,
-      BigDecimal totalPagamento,
-      TipoPagamento tipoPagamento,
-      LocalDateTime dataEHorarioPagamento,
-      StatusPagamento statusPagamento) {
-
-    this.id = id;
-    this.totalPagamento = totalPagamento;
-    this.tipoPagamento = tipoPagamento;
-    this.dataEHorarioPagamento = dataEHorarioPagamento;
-    this.statusPagamento = statusPagamento;
-  }
-
   public Pagamento() {}
 
   public Pagamento(
@@ -56,24 +42,12 @@ public class Pagamento {
     return statusPagamento;
   }
 
-  public void setTotalPagamento(BigDecimal totalPagamento) {
-    this.totalPagamento = totalPagamento;
-  }
-
   public TipoPagamento getTipoPagamento() {
     return tipoPagamento;
   }
 
-  public void setTipoPagamento(TipoPagamento tipoPagamento) {
-    this.tipoPagamento = tipoPagamento;
-  }
-
   public LocalDateTime getDataEHorarioPagamento() {
     return dataEHorarioPagamento;
-  }
-
-  public void setDataEHorarioPagamento(LocalDateTime dataEHorarioPagamento) {
-    this.dataEHorarioPagamento = dataEHorarioPagamento;
   }
 
   public void setStatusPagamento(StatusPagamento statusPagamento) {

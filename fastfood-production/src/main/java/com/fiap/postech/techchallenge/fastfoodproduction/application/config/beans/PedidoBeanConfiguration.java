@@ -42,9 +42,4 @@ public class PedidoBeanConfiguration {
     return new ListagemDePedidoPorStatus(pedidoRepository);
   }
 
-  @Bean
-  public PedidoConverter pedidoConverter(){
-    return new PedidoConverter();
-  }
-
 }

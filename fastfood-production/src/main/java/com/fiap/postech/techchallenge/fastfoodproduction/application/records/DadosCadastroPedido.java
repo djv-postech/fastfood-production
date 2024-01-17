@@ -36,32 +36,4 @@ public record DadosCadastroPedido(
     @NotNull @JsonSerialize(using = LocalDateTimeSerializer.class)
     LocalDateTime dataCriacaoPedido) {
 
-//    public DadosCadastroPedido(String cliente, List<DadosCadastroProduto> dadosCadastroProdutos, BigDecimal valorTotal, DadosCadastroPagamento dadosCadastroPagamento,
-//                               StatusPedido statusPedido){
-//        this(cliente, dadosCadastroProdutos, valorTotal, dadosCadastroPagamento, statusPedido);
-//    }
-
-  public Pedido toPedido() {
-    return new Pedido(
-            new Cliente(cliente.nome(), new CPF(cliente.cpf()), new Email(cliente.email())),
-            buildProdutos(produtos),
-            valorTotal,
-            new Pagamento(pagamento.dataPagamento(), pagamento.statusPagamento(), pagamento.tipoPagamento(), pagamento.totalPagamento()),
-            statusPedido,
-            dataCriacaoPedido);
-  }
-
-  private List<Produto> buildProdutos(List<DadosCadastroProduto> cadastroProdutos) {
-    return cadastroProdutos.stream()
-            .map(
-                    cadastroProduto ->
-                            new Produto(
-                                    cadastroProduto.nome(),
-                                    cadastroProduto.descricao(),
-                                    cadastroProduto.categoria(),
-                                    cadastroProduto.preco(),
-                                    cadastroProduto.quantidade()))
-            .collect(Collectors.toList());
-  }
-
 }

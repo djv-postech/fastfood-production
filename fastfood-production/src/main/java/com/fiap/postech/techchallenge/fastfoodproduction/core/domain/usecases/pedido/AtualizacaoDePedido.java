@@ -20,7 +20,7 @@ public class AtualizacaoDePedido {
     return pedidoRepository.atualizarPedido(pedido);
   }
 
-  public Pedido atualizarPedido(String numeroPedido, StatusPagamento statusPagamento) {
+  public Pedido atualizarStatusPagamentoPedido(String numeroPedido, StatusPagamento statusPagamento) {
     final Pedido pedido = pedidoRepository.listarPedidoPorNumeroPedido(numeroPedido);
     Pagamento pagamento = pedido.getPagamento();
     pagamento.setStatusPagamento(statusPagamento);

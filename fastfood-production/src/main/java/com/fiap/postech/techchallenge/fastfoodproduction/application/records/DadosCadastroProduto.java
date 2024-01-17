@@ -24,7 +24,4 @@ public record DadosCadastroProduto(
         @NotNull
         Categoria categoria)  {
 
-        public List<Produto> convertToProduto(DadosCadastroProduto dadosCadastroProduto){
-                return null;
-        }
 }

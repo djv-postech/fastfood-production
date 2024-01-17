@@ -1,9 +1,6 @@
 package com.fiap.postech.techchallenge.fastfoodproduction.core.domain.usecases.pedido;
 
-import com.fiap.postech.techchallenge.fastfoodproduction.application.records.DadosCadastroCliente;
-import com.fiap.postech.techchallenge.fastfoodproduction.application.records.DadosCadastroPagamento;
-import com.fiap.postech.techchallenge.fastfoodproduction.application.records.DadosCadastroPedido;
-import com.fiap.postech.techchallenge.fastfoodproduction.application.records.DadosCadastroProduto;
+import com.fiap.postech.techchallenge.fastfoodproduction.application.records.*;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.cliente.Cliente;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pagamento.Pagamento;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pagamento.StatusPagamento;
@@ -71,6 +68,13 @@ public class PedidoHelper {
 
     private static DadosCadastroCliente dadosCadastroCliente() {
         return new DadosCadastroCliente("Teste", "222.222.222-22", "teste@gmail.com");
+    }
+
+    public static DadosPedido criarDadosPedido(){
+     return new DadosPedido("1", List.of(new DadosProduto("1", "BigMac", "Descricao Big", BigDecimal.TEN, Categoria.LANCHE, 1)),
+                new DadosCliente("Test", new CPF("333.333.333-33"), new Email("teste@gmail.com")),
+                        new DadosPagamento("1", BigDecimal.TEN, TipoPagamento.CARTAO, LocalDateTime.now(), StatusPagamento.APROVADO),
+             StatusPedido.PRONTO, LocalDateTime.now(), BigDecimal.TEN, "");
     }
 }
 

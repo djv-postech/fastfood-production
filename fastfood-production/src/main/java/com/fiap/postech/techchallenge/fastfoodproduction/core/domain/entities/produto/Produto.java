@@ -24,21 +24,6 @@ public class Produto {
         this.categoria = categoria;
     }
 
-    public Produto(String nome, String descricao, Categoria categoria, BigDecimal preco, int quantidade) {
-        this.nome = nome;
-        this.descricao = descricao;
-        this.categoria = categoria;
-        this.preco = preco;
-        this.quantidade = quantidade;
-    }
-
-    public Produto(String nome, String descricao, Integer quantidade, BigDecimal preco){
-        this.nome = nome;
-        this.descricao = descricao;
-        this.quantidade = quantidade;
-        this.preco = preco;
-    }
-
     public Produto(String nome, String descricao, Categoria categoria) {
         this.nome = nome;
         this.descricao = descricao;
@@ -70,28 +55,8 @@ public class Produto {
         return categoria;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public void setPreco(BigDecimal preco) {
-        this.preco = preco;
-    }
-
     public void setId(String id) {
         this.id = id;
-    }
-
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
-    }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
     }
 
 }

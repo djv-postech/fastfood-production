@@ -8,7 +8,6 @@ import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pe
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.usecases.pedido.*;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -86,7 +85,7 @@ public class PedidoProducaoController {
     @PutMapping("/pedido/{numeroPedido}/statusPagamento/{statusPagamento}")
     public ResponseEntity<DadosPedido> atualizarStatusPagamentoPedido(
             @PathVariable String numeroPedido, @PathVariable("statusPagamento") final StatusPagamento statusPagamento) {
-        Pedido pedido = atualizacaoDePedido.atualizarPedido(numeroPedido, statusPagamento);
+        Pedido pedido = atualizacaoDePedido.atualizarStatusPagamentoPedido(numeroPedido, statusPagamento);
         return ResponseEntity.ok(new DadosPedido(pedido));
     }
 

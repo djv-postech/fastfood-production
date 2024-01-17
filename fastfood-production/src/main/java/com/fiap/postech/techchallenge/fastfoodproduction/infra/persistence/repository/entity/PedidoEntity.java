@@ -25,6 +25,7 @@ public class PedidoEntity {
   private StatusPedido statusPedido;
   private LocalDateTime dataCriacaoPedido;
   private String qrCode;
+
   public PedidoEntity(Pedido pedido) {
     this.numeroPedido = pedido.getNumeroPedido();
     this.cliente = pedido.getCliente();
@@ -34,25 +35,6 @@ public class PedidoEntity {
     this.statusPedido = pedido.getStatusPedido();
     this.dataCriacaoPedido = pedido.getDataCriacaoPedido();
     this.qrCode = pedido.getQrCode();
-  }
-
-  public PedidoEntity(
-      String numeroPedido,
-      Cliente cliente,
-      List<Produto> produtos,
-      BigDecimal valorTotal,
-      Pagamento pagamento,
-      StatusPedido statusPedido,
-      LocalDateTime dataCriacaoPedido,
-      String qrCode) {
-    this.numeroPedido = numeroPedido;
-    this.cliente = cliente;
-    this.produtos = produtos;
-    this.valorTotal = valorTotal;
-    this.pagamento = pagamento;
-    this.statusPedido = statusPedido;
-    this.dataCriacaoPedido = dataCriacaoPedido;
-    this.qrCode = qrCode;
   }
 
   public PedidoEntity() {}

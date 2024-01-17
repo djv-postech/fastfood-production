@@ -1,6 +1,5 @@
 package com.fiap.postech.techchallenge.fastfoodproduction.application.amqp;
 
-import com.fiap.postech.techchallenge.fastfoodproduction.application.records.DadosCadastroPedido;
 import com.fiap.postech.techchallenge.fastfoodproduction.application.records.DadosPedido;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.usecases.pedido.CadastroDePedido;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;

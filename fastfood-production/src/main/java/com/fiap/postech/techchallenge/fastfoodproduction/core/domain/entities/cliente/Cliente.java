@@ -19,10 +19,6 @@ public class  Cliente {
     return nome;
   }
 
-  public void setNome(String nome) {
-    this.nome = nome;
-  }
-
   public CPF getCpf() {
     return cpf;
   }
@@ -31,7 +27,4 @@ public class  Cliente {
     return email;
   }
 
-  public void setEmail(Email email){
-    this.email = email;
-  }
 }
