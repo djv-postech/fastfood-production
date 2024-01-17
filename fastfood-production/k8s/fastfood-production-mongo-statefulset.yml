@@ -11,6 +11,8 @@ spec:
       name: fastfood-production-mongo
       labels:
         app: fastfood-production-mongo
+      annotations:
+        sidecar.istio.io/inject: "false"
     spec:
       containers:
         - name: fastfood-production-mongo-container

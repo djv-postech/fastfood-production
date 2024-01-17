@@ -3,6 +3,8 @@ server:
   port: 8082
 
 spring:
+  application:
+    name: fastfood-production-service
   rabbitmq:
     host: ${RABBIT_HOST:localhost}
     port: 5672

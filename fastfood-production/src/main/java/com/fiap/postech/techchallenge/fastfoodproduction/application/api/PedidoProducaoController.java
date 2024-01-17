@@ -2,6 +2,7 @@ package com.fiap.postech.techchallenge.fastfoodproduction.application.api;
 
 import com.fiap.postech.techchallenge.fastfoodproduction.application.records.DadosCadastroPedido;
 import com.fiap.postech.techchallenge.fastfoodproduction.application.records.DadosPedido;
+import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pagamento.StatusPagamento;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pedido.Pedido;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pedido.StatusPedido;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.usecases.pedido.*;
@@ -74,10 +75,18 @@ public class PedidoProducaoController {
     }
 
     @Operation(summary = "Atualizar status do pedido")
-    @PutMapping("/pedido/{numeroPedido}/{status}")
+    @PutMapping("/pedido/{numeroPedido}/statusPedido/{status}")
     public ResponseEntity<DadosPedido> atualizarStatusPedido(
             @PathVariable String numeroPedido, @PathVariable("status") final StatusPedido statusPedido) {
         Pedido pedido = atualizacaoDePedido.atualizarStatusPedido(numeroPedido, statusPedido);
+        return ResponseEntity.ok(new DadosPedido(pedido));
+    }
+
+    @Operation(summary = "Atualizar status do pagamento no pedido")
+    @PutMapping("/pedido/{numeroPedido}/statusPagamento/{statusPagamento}")
+    public ResponseEntity<DadosPedido> atualizarStatusPagamentoPedido(
+            @PathVariable String numeroPedido, @PathVariable("statusPagamento") final StatusPagamento statusPagamento) {
+        Pedido pedido = atualizacaoDePedido.atualizarPedido(numeroPedido, statusPagamento);
         return ResponseEntity.ok(new DadosPedido(pedido));
     }
 

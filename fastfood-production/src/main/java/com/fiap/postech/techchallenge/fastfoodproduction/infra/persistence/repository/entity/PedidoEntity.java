@@ -7,7 +7,6 @@ import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pa
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pedido.Pedido;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pedido.StatusPedido;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.produto.Produto;
-import lombok.Builder;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -25,7 +24,7 @@ public class PedidoEntity {
   private Pagamento pagamento;
   private StatusPedido statusPedido;
   private LocalDateTime dataCriacaoPedido;
-
+  private String qrCode;
   public PedidoEntity(Pedido pedido) {
     this.numeroPedido = pedido.getNumeroPedido();
     this.cliente = pedido.getCliente();
@@ -34,31 +33,18 @@ public class PedidoEntity {
     this.pagamento = pedido.getPagamento();
     this.statusPedido = pedido.getStatusPedido();
     this.dataCriacaoPedido = pedido.getDataCriacaoPedido();
+    this.qrCode = pedido.getQrCode();
   }
 
   public PedidoEntity(
+      String numeroPedido,
       Cliente cliente,
       List<Produto> produtos,
       BigDecimal valorTotal,
       Pagamento pagamento,
       StatusPedido statusPedido,
-      LocalDateTime dataCriacaoPedido) {
-    this.cliente = cliente;
-    this.produtos = produtos;
-    this.valorTotal = valorTotal;
-    this.pagamento = pagamento;
-    this.statusPedido = statusPedido;
-    this.dataCriacaoPedido = dataCriacaoPedido;
-  }
-
-  public PedidoEntity(
-          String numeroPedido,
-          Cliente cliente,
-          List<Produto> produtos,
-          BigDecimal valorTotal,
-          Pagamento pagamento,
-          StatusPedido statusPedido,
-          LocalDateTime dataCriacaoPedido) {
+      LocalDateTime dataCriacaoPedido,
+      String qrCode) {
     this.numeroPedido = numeroPedido;
     this.cliente = cliente;
     this.produtos = produtos;
@@ -66,9 +52,19 @@ public class PedidoEntity {
     this.pagamento = pagamento;
     this.statusPedido = statusPedido;
     this.dataCriacaoPedido = dataCriacaoPedido;
+    this.qrCode = qrCode;
   }
 
   public PedidoEntity() {}
+
+  public PedidoEntity(Cliente cliente, List<Produto> produtos, BigDecimal valorTotal, Pagamento pagamento, StatusPedido statusPedido, LocalDateTime dataCriacaoPedido) {
+    this.cliente = cliente;
+    this.produtos = produtos;
+    this.valorTotal = valorTotal;
+    this.pagamento = pagamento;
+    this.statusPedido = statusPedido;
+    this.dataCriacaoPedido = dataCriacaoPedido;
+  }
 
   public String getNumeroPedido() {
     return numeroPedido;
@@ -93,6 +89,11 @@ public class PedidoEntity {
   public LocalDateTime getDataCriacaoPedido() {
     return dataCriacaoPedido;
   }
+
+  public String getQrCode() {
+    return qrCode;
+  }
+
 
   public Cliente getCliente() {
     return cliente;

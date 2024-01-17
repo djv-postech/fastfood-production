@@ -11,6 +11,8 @@ spec:
       name: fastfood-production-rabbit
       labels:
         app: fastfood-production-rabbit
+      annotations:
+        sidecar.istio.io/inject: "false"
     spec:
       containers:
         - name: fastfood-production-rabbit-container

@@ -8,6 +8,6 @@ resources:
   - fastfood-production-deployment.yml
   - fastfood-production-mongo-statefulset.yml
   - fastfood-production-rabbit-statefulset.yml
-  - fastfood-production-deployment-vs.yml
-  - fastfood-production-mongo-statefulset-vs.yml
-  - fastfood-production-rabbit-statefulset-vs.yml
+#  - fastfood-production-deployment-vs.yml
+#  - fastfood-production-mongo-statefulset-vs.yml
+#  - fastfood-production-rabbit-statefulset-vs.yml

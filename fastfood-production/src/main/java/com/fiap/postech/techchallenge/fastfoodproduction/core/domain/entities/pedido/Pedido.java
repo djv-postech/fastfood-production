@@ -12,40 +12,45 @@ import java.util.List;
 
 @ToString
 @EqualsAndHashCode
+
 public class Pedido {
 
   private String numeroPedido;
-  private Cliente cliente;
-  private List<Produto> produtos;
-  private BigDecimal valorTotal;
+  private final Cliente cliente;
+  private final List<Produto> produtos;
+  private final BigDecimal valorTotal;
   private Pagamento pagamento;
   private StatusPedido statusPedido;
-  private LocalDateTime dataCriacaoPedido;
+  private String qrCode;
+  private final LocalDateTime dataCriacaoPedido;
 
   public Pedido(
-      String numeroPedido,
-      Cliente cliente,
-      List<Produto> produtos,
-      BigDecimal valorTotal,
-      Pagamento pagamento,
-      StatusPedido statusPedido,
-      LocalDateTime dataCriacaoPedido) {
+          String numeroPedido,
+          Cliente cliente,
+          List<Produto> produtos,
+          BigDecimal valorTotal,
+          Pagamento pagamento,
+          StatusPedido statusPedido,
+          LocalDateTime dataCriacaoPedido,
+          String qrCode) {
     this.numeroPedido = numeroPedido;
     this.cliente = cliente;
     this.produtos = produtos;
     this.valorTotal = valorTotal;
     this.pagamento = pagamento;
     this.statusPedido = statusPedido;
+    this.qrCode = qrCode;
     this.dataCriacaoPedido = dataCriacaoPedido;
+
   }
 
   public Pedido(
-      Cliente cliente,
-      List<Produto> produtos,
-      BigDecimal valorTotal,
-      Pagamento pagamento,
-      StatusPedido statusPedido,
-      LocalDateTime dataCriacaoPedido) {
+          Cliente cliente,
+          List<Produto> produtos,
+          BigDecimal valorTotal,
+          Pagamento pagamento,
+          StatusPedido statusPedido,
+          LocalDateTime dataCriacaoPedido) {
     this.cliente = cliente;
     this.produtos = produtos;
     this.valorTotal = valorTotal;
@@ -53,6 +58,7 @@ public class Pedido {
     this.statusPedido = statusPedido;
     this.dataCriacaoPedido = dataCriacaoPedido;
   }
+
 
   public String getNumeroPedido() {
     return numeroPedido;
@@ -82,6 +88,10 @@ public class Pedido {
     return dataCriacaoPedido;
   }
 
+  public String getQrCode() {
+    return qrCode;
+  }
+
   public void setPagamento(Pagamento pagamento) {
     this.pagamento = pagamento;
   }
@@ -89,4 +99,13 @@ public class Pedido {
   public void setStatus(StatusPedido statusPedido) {
     this.statusPedido = statusPedido;
   }
+
+  public void setQrCode(String qrCode) {
+    this.qrCode = qrCode;
+  }
+
+  public void setNumeroPedido(String numeroPedido) {
+    this.numeroPedido = numeroPedido;
+  }
+
 }

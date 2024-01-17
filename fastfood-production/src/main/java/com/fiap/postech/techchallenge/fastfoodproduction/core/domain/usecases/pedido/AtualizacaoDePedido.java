@@ -20,10 +20,12 @@ public class AtualizacaoDePedido {
     return pedidoRepository.atualizarPedido(pedido);
   }
 
-  public Pedido atualizarStatusPedido(String numeroPedido, Pagamento pagamento) {
+  public Pedido atualizarPedido(String numeroPedido, StatusPagamento statusPagamento) {
     final Pedido pedido = pedidoRepository.listarPedidoPorNumeroPedido(numeroPedido);
+    Pagamento pagamento = pedido.getPagamento();
+    pagamento.setStatusPagamento(statusPagamento);
     StatusPedido statusPedido =
-        pagamento.getStatusPagamento().equals(StatusPagamento.APROVADO)
+            statusPagamento.equals(StatusPagamento.APROVADO)
             ? StatusPedido.EM_PREPARACAO
             : pedido.getStatusPedido();
     pedido.setPagamento(pagamento);
