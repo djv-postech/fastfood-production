@@ -1,8 +1,11 @@
 package com.fiap.postech.techchallenge.fastfoodproduction.core.domain.vo;
 
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
 public class CPF {
 
-	private final String numero;
+	private String numero;
 
 	public CPF(String numero) {
 		if (numero == null ||

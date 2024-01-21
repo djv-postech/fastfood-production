@@ -10,7 +10,7 @@ public class SwaggerConfiguration {
 
   @Bean
   public OpenAPI customOpenAPI() {
-    return new OpenAPI().info(new Info().title("Tech Challenge").version("1.0"));
+    return new OpenAPI().info(new Info().title("API de Gerenciamento da Produção de Pedido").version("1.0"));
   }
 
 }

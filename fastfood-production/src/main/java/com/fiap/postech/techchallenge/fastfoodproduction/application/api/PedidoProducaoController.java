@@ -2,6 +2,7 @@ package com.fiap.postech.techchallenge.fastfoodproduction.application.api;
 
 import com.fiap.postech.techchallenge.fastfoodproduction.application.records.DadosCadastroPedido;
 import com.fiap.postech.techchallenge.fastfoodproduction.application.records.DadosPedido;
+import com.fiap.postech.techchallenge.fastfoodproduction.application.records.DadosProduto;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pagamento.StatusPagamento;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pedido.Pedido;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pedido.StatusPedido;
@@ -22,16 +23,18 @@ import static com.fiap.postech.techchallenge.fastfoodproduction.infra.config.amq
 public class PedidoProducaoController {
 
     private final RabbitTemplate rabbitTemplate;
+    private final CadastroDePedido cadastroDePedido;
     private final ListagemDePedidoPorNumeroDePedido listarPedidoPorNumeroPedido;
     private final ListagemDePedidoPorStatus listarPedidoPorStatus;
     private final ListagemDePedidoOrdenadosPorRecebimentoEStatus listagemDePedidoOrdenadosPorRecebimentoEStatus;
     private final AtualizacaoDePedido atualizacaoDePedido;
 
-    public PedidoProducaoController(
+    public PedidoProducaoController(CadastroDePedido cadastroDePedido,
             ListagemDePedidoPorNumeroDePedido listarPedidoPorNumeroPedido,
             ListagemDePedidoPorStatus listarPedidoPorStatus,
             ListagemDePedidoOrdenadosPorRecebimentoEStatus listagemDePedidoOrdenadosPorRecebimentoEStatus,
             AtualizacaoDePedido atualizacaoDePedido, RabbitTemplate rabbitTemplate) {
+        this.cadastroDePedido = cadastroDePedido;
         this.listarPedidoPorNumeroPedido = listarPedidoPorNumeroPedido;
         this.listarPedidoPorStatus = listarPedidoPorStatus;
         this.listagemDePedidoOrdenadosPorRecebimentoEStatus =
@@ -45,6 +48,13 @@ public class PedidoProducaoController {
         rabbitTemplate.convertAndSend(PEDIDO_PRODUCAO_EX, "", dadosCadastroPedido);
         return ResponseEntity.ok().build();
     }
+
+    @PostMapping("/pedido/cadastro")
+    public ResponseEntity<?> cadastroPedidoProducao(@RequestBody DadosPedido dadosPedido){
+        Pedido pedido = cadastroDePedido.cadastrarPedido(dadosPedido.convertToPedido());
+        return ResponseEntity.ok().body(new DadosPedido(pedido));
+    }
+
 
     @Operation(summary = "Listar pedido por numero do Pedido")
     @GetMapping("/pedido/{numeroPedido}")

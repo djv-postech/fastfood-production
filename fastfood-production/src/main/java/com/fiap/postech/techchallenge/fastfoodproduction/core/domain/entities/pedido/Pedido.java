@@ -12,17 +12,18 @@ import java.util.List;
 
 @ToString
 @EqualsAndHashCode
-
 public class Pedido {
 
   private String numeroPedido;
-  private final Cliente cliente;
-  private final List<Produto> produtos;
-  private final BigDecimal valorTotal;
+  private Cliente cliente;
+  private List<Produto> produtos;
+  private BigDecimal valorTotal;
   private Pagamento pagamento;
   private StatusPedido statusPedido;
   private String qrCode;
-  private final LocalDateTime dataCriacaoPedido;
+  private LocalDateTime dataCriacaoPedido;
+
+  public Pedido(){ }
 
   public Pedido(
           String numeroPedido,

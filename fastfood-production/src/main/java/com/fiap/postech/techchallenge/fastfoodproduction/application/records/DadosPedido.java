@@ -20,11 +20,19 @@ import java.util.stream.Collectors;
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 import static java.util.Objects.isNull;
 
-public record DadosPedido(@JsonInclude(NON_NULL) String id, List<DadosProduto> produtos,
+public record DadosPedido(@JsonInclude(NON_NULL) String id,
 
-                          @JsonInclude(NON_NULL) DadosCliente cliente, DadosPagamento pagamento, StatusPedido status,
+                          List<DadosProduto> produtos,
 
-                          @NotNull @JsonSerialize(using = LocalDateTimeSerializer.class) LocalDateTime dataCriacaoPedido,
+                          @JsonInclude(NON_NULL)
+                          DadosCliente cliente,
+
+                          DadosPagamento pagamento,
+
+                          StatusPedido status,
+
+                          @NotNull @JsonSerialize(using = LocalDateTimeSerializer.class)
+                          LocalDateTime dataCriacaoPedido,
 
                           @NotNull BigDecimal valorTotal,
 
@@ -46,7 +54,7 @@ public record DadosPedido(@JsonInclude(NON_NULL) String id, List<DadosProduto> p
     }
 
     private List<Produto> buildProdutos(List<DadosProduto> dadosProdutos) {
-        return dadosProdutos.stream().map(cadastroProduto -> new Produto(cadastroProduto.id(), cadastroProduto.nome(), cadastroProduto.descricao(), cadastroProduto.preco(), cadastroProduto.quantidade(), cadastroProduto.produtoCategoria())).collect(Collectors.toList());
+        return dadosProdutos.stream().map(cadastroProduto -> new Produto(cadastroProduto.id(), cadastroProduto.nome(), cadastroProduto.descricao(), cadastroProduto.preco(), cadastroProduto.quantidade(), cadastroProduto.categoria())).collect(Collectors.toList());
     }
 
 

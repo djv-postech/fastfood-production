@@ -6,7 +6,7 @@ spring:
   application:
     name: fastfood-production-service
   rabbitmq:
-    host: ${RABBIT_HOST:localhost}
+    host: ${RABBIT_HOST:rabbitmq}
     port: 5672
     username: ${RABBIT_USERNAME:guest}
     password: ${RABBIT_PASSWORD:guest}
@@ -22,9 +22,9 @@ spring:
 
   data:
     mongodb:
-      host: ${MONGO_HOST:localhost}
-      username: ${MONGO_USERNAME:product-production}
-      password: ${MONGO_PASSWORD:product-production-123}
+      host: ${MONGO_HOST:mongodb}
+      username: ${MONGO_USERNAME:root}
+      password: ${MONGO_PASSWORD:root}
       database: ${MONGO_DB:db_pedidos_producao}
       port: 27017
       authentication-database: admin

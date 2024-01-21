@@ -1,20 +1,41 @@
 version: '3'
 services:
-  mysqldb:
-    image: mysql:latest
+  rabbitmq:
+    image: rabbitmq:latest
+    ports:
+      - "5672:5672"
+    networks:
+      - my_net
+
+
+  mongodb:
+    image: mongo:latest
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+      - MONGO_INITDB_DATABASE=db_pedidos_producao
+      - ME_CONFIG_MONGODB_ENABLE_ADMIN=true
+    volumes:
+      - db:/data/db
     ports:
       - "3306:3306"
     networks:
       - my_net
+
+
   api:
-    image: fastfood-product-management:latest
+    image: soatpostech/fastfood-production:latest
     ports:
-      - "8080:8080"
+      - "8082:8082"
     depends_on:
-      - mysqldb
+      - mongodb
+      - rabbitmq
     networks:
       - my_net
 
 networks:
   my_net:
     driver: bridge
+
+volumes:
+  db:

@@ -1,8 +1,11 @@
 package com.fiap.postech.techchallenge.fastfoodproduction.core.domain.vo;
 
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
 public class Email {
 	
-	private final String endereco;
+	private String endereco;
 
 	public Email(String endereco) {
 		if (endereco == null ||

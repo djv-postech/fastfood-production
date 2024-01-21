@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generated schema for Root",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "produtos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "nome": {
+            "type": "string"
+          },
+          "descricao": {
+            "type": "string"
+          },
+          "preco": {
+            "type": "number"
+          },
+          "categoria": {
+            "type": "string"
+          },
+          "quantidade": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "id",
+          "nome",
+          "descricao",
+          "preco",
+          "categoria",
+          "quantidade"
+        ]
+      }
+    },
+    "cliente": {
+      "type": "object",
+      "properties": {
+        "nome": {
+          "type": "string"
+        },
+        "cpf": {
+          "type": "object",
+          "properties": {
+            "numero": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "numero"
+          ]
+        },
+        "email": {
+          "type": "object",
+          "properties": {
+            "endereco": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "endereco"
+          ]
+        }
+      },
+      "required": [
+        "nome",
+        "cpf",
+        "email"
+      ]
+    },
+    "pagamento": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "totalPagamento": {
+          "type": "number"
+        },
+        "tipoPagamento": {
+          "type": "string"
+        },
+        "dataPagamento": {
+          "type": "string"
+        },
+        "statusPagamento": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "totalPagamento",
+        "tipoPagamento",
+        "dataPagamento",
+        "statusPagamento"
+      ]
+    },
+    "status": {
+      "type": "string"
+    },
+    "dataCriacaoPedido": {
+      "type": "string"
+    },
+    "valorTotal": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "id",
+    "produtos",
+    "cliente",
+    "pagamento",
+    "status",
+    "dataCriacaoPedido",
+    "valorTotal"
+  ]
+}

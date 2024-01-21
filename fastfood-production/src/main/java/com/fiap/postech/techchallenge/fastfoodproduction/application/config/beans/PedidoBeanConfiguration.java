@@ -1,4 +1,5 @@
 package com.fiap.postech.techchallenge.fastfoodproduction.application.config.beans;
+import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pedido.Pedido;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pedido.PedidoRepository;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.usecases.pedido.*;
 import com.fiap.postech.techchallenge.fastfoodproduction.infra.persistence.repository.PedidoRepositoryImpl;
