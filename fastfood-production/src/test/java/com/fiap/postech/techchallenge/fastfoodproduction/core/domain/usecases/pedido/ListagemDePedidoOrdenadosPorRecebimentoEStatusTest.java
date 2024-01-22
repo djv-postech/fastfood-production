@@ -12,6 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.mockito.Mockito.when;
 
@@ -28,10 +29,11 @@ class ListagemDePedidoOrdenadosPorRecebimentoEStatusTest {
     @Test
     public void devePermitirListaPedidosOrdenadosPorRecebimentoEStatus(){
         //Arrange
-        Pedido pedido2 = PedidoHelper.criarPedidoCom(StatusPedido.RECEBIDO);
-        Pedido pedido3 = PedidoHelper.criarPedidoCom(StatusPedido.EM_PREPARACAO);
+        Pedido pedido1 = PedidoHelper.criarPedidoCom(StatusPedido.RECEBIDO);
+        Pedido pedido2 = PedidoHelper.criarPedidoCom(StatusPedido.EM_PREPARACAO);
+        Pedido pedido3 = PedidoHelper.criarPedidoCom(StatusPedido.FINALIZADO);
 
-        List<Pedido> listaDePedidosPorStatus = Arrays.asList(pedido2, pedido3);
+        List<Pedido> listaDePedidosPorStatus = Arrays.asList(pedido1, pedido2, pedido3);
 
         when(pedidoRepository.listarPedidos()).thenReturn(listaDePedidosPorStatus);
 
@@ -40,7 +42,10 @@ class ListagemDePedidoOrdenadosPorRecebimentoEStatusTest {
 
         //Assert
         Assertions.assertThat(pedidos).isNotNull();
-        Assertions.assertThat(pedidos.size()).isEqualTo(listaDePedidosPorStatus.size());
+        Assertions.assertThat(pedidos.size()).isEqualTo(2);
+        List<StatusPedido> statusPedido = pedidos.stream().map(Pedido::getStatusPedido)
+                .collect(Collectors.toList());
 
+        Assertions.assertThat(statusPedido).doesNotContainSequence(StatusPedido.FINALIZADO);
     }
 }

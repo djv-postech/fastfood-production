@@ -10,8 +10,6 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@ToString
-@EqualsAndHashCode
 public class Pedido {
 
   private String numeroPedido;
@@ -22,8 +20,6 @@ public class Pedido {
   private StatusPedido statusPedido;
   private String qrCode;
   private LocalDateTime dataCriacaoPedido;
-
-  public Pedido(){ }
 
   public Pedido(
           String numeroPedido,

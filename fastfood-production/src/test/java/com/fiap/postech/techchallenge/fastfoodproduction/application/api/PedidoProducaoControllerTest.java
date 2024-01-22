@@ -111,6 +111,22 @@ class PedidoProducaoControllerTest {
                 .andExpect(status().isOk());
     }
 
+    @DisplayName("Test - Deve retornar status NOT FOUND ao buscar por numero pedido que não foi cadastrado")
+    @Test
+    public void deveRetornarStatusNotFoundAoBuscarPorNumeroPedidoNaoCadastrado() throws Exception {
+        // Dado
+        String id = "1";
+        Pedido pedido = PedidoHelper.criarPedidoCompleto();
+
+        given(listarPedidoPorNumeroPedido.listarPedidoPorNumeroPedido(id))
+                .willReturn(null);
+
+        // Quando
+        mockMvc.perform(MockMvcRequestBuilders.get("/producao/pedido/" + id)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound());
+    }
+
     @DisplayName("Test - Deve permitir listar pedidos por status")
     @Test
     public void devePermitirBuscarPedidoPorStatusDoPedido() throws Exception {
@@ -144,6 +160,21 @@ class PedidoProducaoControllerTest {
 
         // Quando
         mockMvc.perform(MockMvcRequestBuilders.get("/producao/pedido/todos")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
+
+    @DisplayName("Test - Deve permitir atualizar status do pedido")
+    @Test
+    public void devePermitirAtualizarStatusDoPedido() throws Exception {
+        // Dado
+        Pedido pedido = PedidoHelper.criarPedidoCompleto();
+
+        given(atualizacaoDePedido.atualizarStatusPedido("1", StatusPedido.PRONTO))
+                .willReturn(pedido);
+
+        // Quando
+        mockMvc.perform(MockMvcRequestBuilders.put("/producao/pedido/1/statusPedido/PRONTO")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }

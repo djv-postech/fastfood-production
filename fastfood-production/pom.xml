@@ -167,7 +167,6 @@
 									<excludes>
 										<exclude>**.*Application</exclude>
 										<exclude>**.*Configuration</exclude>
-										<exclude>**.*Repository</exclude>
 										<exclude>**.*Error</exclude>
 										<exclude>**.*Handler</exclude>
 									</excludes>
