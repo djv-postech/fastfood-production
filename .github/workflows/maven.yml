@@ -1,9 +1,9 @@
 name: fastfood-production-CICD
 
 on:
-  push:
-     branches:
-       - main
+  pull_request:
+    branches:
+      - main
 jobs:
   Unit-Tests:
     name: Unit Tests
