@@ -117,5 +117,5 @@ jobs:
       - run: aws eks update-kubeconfig --region us-east-1 --name fastfood-management-cluster
 
       - run: cd fastfood-production && kubectl apply -k k8s 
-if: github.event_name == 'push' && github.ref == 'refs/heads/main'      
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'      
     
