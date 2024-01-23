@@ -64,7 +64,7 @@ jobs:
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: cd fastfood-production && mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=djv-postech_fastfood-productionmain_push:
+        run: cd fastfood-production && mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=djv-postech_fastfood-production
 
   Build:
     name: Build App
