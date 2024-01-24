@@ -23,7 +23,7 @@ public class PedidoHelper {
 
 
     public static Pedido criarPedidoCompleto() {
-        return new Pedido(cliente(), listaProdutos(), BigDecimal.TEN, pagamento(), StatusPedido.RECEBIDO, LocalDateTime.now());
+        return new Pedido("numeroPedido", cliente(), listaProdutos(), BigDecimal.TEN, pagamento(), StatusPedido.RECEBIDO, LocalDateTime.now());
     }
 
     private static Pagamento pagamento() {
@@ -43,7 +43,7 @@ public class PedidoHelper {
     }
 
     public static Pedido criarPedidoCom(StatusPedido statusPedido) {
-        return new Pedido(cliente(), listaProdutos(), new BigDecimal("20"), pagamento(), statusPedido, LocalDateTime.now());
+        return new Pedido("numeroPedido", cliente(), listaProdutos(), new BigDecimal("20"), pagamento(), statusPedido, LocalDateTime.now());
     }
 
     public static DadosCadastroPedido criarDadosCadastroPedido() {

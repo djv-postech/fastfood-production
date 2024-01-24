@@ -57,7 +57,7 @@ public class DefinicaoPassosProducao{
     public void quando_buscar_pelo_numero_do_pedido() {
         response = given()
                 .when()
-                .get(ENDPOINT_API_PRODUCAO + "/{numeroPedido}", dadosPedido.id());
+                .get(ENDPOINT_API_PRODUCAO + "/{numeroPedido}", dadosPedido.numeroPedido());
     }
 
     @Quando("quando buscar pelo numero do pedido que nao foi cadastrado")
@@ -96,7 +96,7 @@ public class DefinicaoPassosProducao{
     public void efetuar_alteração_do_status_do_pedido() {
         response = given()
                 .when()
-                .put(ENDPOINT_API_PRODUCAO + "/{numeroPedido}/statusPedido/{status}", dadosPedido.id(), StatusPedido.RECEBIDO);
+                .put(ENDPOINT_API_PRODUCAO + "/{numeroPedido}/statusPedido/{status}", dadosPedido.numeroPedido(), StatusPedido.RECEBIDO);
     }
     @Entao("o status do pedido é alterado com sucesso")
     public void o_status_do_pedido_é_alterado_com_sucesso() {
@@ -113,7 +113,7 @@ public class DefinicaoPassosProducao{
     public void efetuar_alteração_do_status_de_pagamento_do_pedido() {
         response = given()
                 .when()
-                .put(ENDPOINT_API_PRODUCAO + "/{numeroPedido}/statusPagamento/{statusPagamento}", dadosPedido.id(), StatusPagamento.APROVADO);
+                .put(ENDPOINT_API_PRODUCAO + "/{numeroPedido}/statusPagamento/{statusPagamento}", dadosPedido.numeroPedido(), StatusPagamento.APROVADO);
     }
     @Entao("o status de pagamento do pedido é alterado com sucesso")
     public void o_status_de_pagamento_do_pedido_é_alterado_com_sucesso() {
