@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 import static java.util.Objects.isNull;
 
-public record DadosPedido(@JsonInclude(NON_NULL) String id,
+public record DadosPedido(@JsonInclude(NON_NULL) String numeroPedido,
 
                           List<DadosProduto> produtos,
 
@@ -44,7 +44,7 @@ public record DadosPedido(@JsonInclude(NON_NULL) String id,
     }
 
     public Pedido convertToPedido() {
-        return new Pedido(new Cliente(cliente.nome(), new CPF(cliente.cpf().getNumero()), new Email(cliente.email().getEndereco())), buildProdutos(produtos), valorTotal,
+        return new Pedido(numeroPedido, new Cliente(cliente.nome(), new CPF(cliente.cpf().getNumero()), new Email(cliente.email().getEndereco())), buildProdutos(produtos), valorTotal,
                 new Pagamento(
                         pagamento.dataPagamento(),
                         pagamento.statusPagamento(),
