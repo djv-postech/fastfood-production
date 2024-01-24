@@ -46,6 +46,7 @@ class ListagemDePedidoOrdenadosPorRecebimentoEStatusTest {
         List<StatusPedido> statusPedido = pedidos.stream().map(Pedido::getStatusPedido)
                 .collect(Collectors.toList());
 
-        Assertions.assertThat(statusPedido).doesNotContainSequence(StatusPedido.FINALIZADO);
+        Assertions.assertThat(statusPedido).isNotEmpty()
+                .doesNotContainSequence(StatusPedido.FINALIZADO);
     }
 }
