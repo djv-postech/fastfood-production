@@ -5,21 +5,34 @@ import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pa
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pedido.Pedido;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pedido.PedidoRepository;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pedido.StatusPedido;
+import org.springframework.transaction.annotation.Transactional;
+
+import static com.fiap.postech.techchallenge.fastfoodproduction.infra.persistence.repository.converter.NotificacaoConverter.criarNotificacao;
 
 public class AtualizacaoDePedido {
 
   private final PedidoRepository pedidoRepository;
+  private final NotificacaoService notificacaoService;
 
-  public AtualizacaoDePedido(PedidoRepository pedidoRepository) {
+  public AtualizacaoDePedido(PedidoRepository pedidoRepository,
+                             NotificacaoService notificacaoService) {
     this.pedidoRepository = pedidoRepository;
+    this.notificacaoService = notificacaoService;
   }
 
+  @Transactional
   public Pedido atualizarStatusPedido(String numeroPedido, StatusPedido statusPedido) {
-    final Pedido pedido = pedidoRepository.listarPedidoPorNumeroPedido(numeroPedido);
+    Pedido pedido = pedidoRepository.listarPedidoPorNumeroPedido(numeroPedido);
     pedido.setStatus(statusPedido);
-    return pedidoRepository.atualizarPedido(pedido);
+    Pedido pedidoAtualizado = pedidoRepository.atualizarPedido(pedido);
+
+    notificacaoService.enviarParaFilaDeNotificacao(criarNotificacao(numeroPedido, pedido.getCliente(), statusPedido,
+            pedido.getPagamento()));
+
+    return pedidoAtualizado;
   }
 
+  @Transactional
   public Pedido atualizarStatusPagamentoPedido(String numeroPedido, StatusPagamento statusPagamento) {
     final Pedido pedido = pedidoRepository.listarPedidoPorNumeroPedido(numeroPedido);
     Pagamento pagamento = pedido.getPagamento();
@@ -30,6 +43,12 @@ public class AtualizacaoDePedido {
             : pedido.getStatusPedido();
     pedido.setPagamento(pagamento);
     pedido.setStatus(statusPedido);
-    return pedidoRepository.atualizarPedido(pedido);
+
+    Pedido pedidoAtualizado = pedidoRepository.atualizarPedido(pedido);
+
+    notificacaoService.enviarParaFilaDeNotificacao(criarNotificacao(numeroPedido, pedido.getCliente(), statusPedido,
+            pedido.getPagamento()));
+
+    return pedidoAtualizado;
   }
 }

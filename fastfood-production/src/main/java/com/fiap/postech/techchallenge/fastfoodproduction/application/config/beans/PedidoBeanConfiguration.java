@@ -1,10 +1,7 @@
 package com.fiap.postech.techchallenge.fastfoodproduction.application.config.beans;
-import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pedido.Pedido;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pedido.PedidoRepository;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.usecases.pedido.*;
-import com.fiap.postech.techchallenge.fastfoodproduction.infra.persistence.repository.PedidoRepositoryImpl;
-import com.fiap.postech.techchallenge.fastfoodproduction.infra.persistence.repository.PedidoRepositoryMongo;
-import com.fiap.postech.techchallenge.fastfoodproduction.infra.persistence.repository.converter.PedidoConverter;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,9 +9,14 @@ import org.springframework.context.annotation.Configuration;
 public class PedidoBeanConfiguration {
 
   private final PedidoRepository pedidoRepository;
+  private final RabbitTemplate rabbitTemplate;
+  private final NotificacaoService notificacaoService;
 
-  public PedidoBeanConfiguration(PedidoRepository pedidoRepository) {
+
+  public PedidoBeanConfiguration(PedidoRepository pedidoRepository, RabbitTemplate rabbitTemplate, NotificacaoService notificacaoService) {
     this.pedidoRepository = pedidoRepository;
+    this.rabbitTemplate = rabbitTemplate;
+    this.notificacaoService = notificacaoService;
   }
 
   @Bean
@@ -24,7 +26,7 @@ public class PedidoBeanConfiguration {
 
   @Bean
   public AtualizacaoDePedido atualizacaoDePedido() {
-    return new AtualizacaoDePedido(pedidoRepository);
+    return new AtualizacaoDePedido(pedidoRepository, notificacaoService);
   }
 
   @Bean
