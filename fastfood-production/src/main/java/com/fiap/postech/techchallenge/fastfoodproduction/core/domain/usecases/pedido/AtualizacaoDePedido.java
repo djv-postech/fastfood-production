@@ -1,13 +1,17 @@
 package com.fiap.postech.techchallenge.fastfoodproduction.core.domain.usecases.pedido;
 
+import com.fiap.postech.techchallenge.fastfoodproduction.application.records.DadosNotificacao;
+import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.cliente.Cliente;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pagamento.Pagamento;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pagamento.StatusPagamento;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pedido.Pedido;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pedido.PedidoRepository;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pedido.StatusPedido;
+import com.fiap.postech.techchallenge.fastfoodproduction.infra.NotificacaoBuilder;
 import org.springframework.transaction.annotation.Transactional;
 
-import static com.fiap.postech.techchallenge.fastfoodproduction.infra.persistence.repository.converter.NotificacaoConverter.criarNotificacao;
+import static com.fiap.postech.techchallenge.fastfoodproduction.infra.NotificacaoBuilder.criarNotificacaoStatusPagamento;
+import static com.fiap.postech.techchallenge.fastfoodproduction.infra.NotificacaoBuilder.criarNotificacaoStatusPedido;
 
 public class AtualizacaoDePedido {
 
@@ -26,11 +30,12 @@ public class AtualizacaoDePedido {
     pedido.setStatus(statusPedido);
     Pedido pedidoAtualizado = pedidoRepository.atualizarPedido(pedido);
 
-    notificacaoService.enviarParaFilaDeNotificacao(criarNotificacao(numeroPedido, pedido.getCliente(), statusPedido,
-            pedido.getPagamento()));
+    notificacaoService.enviarParaFilaDeNotificacao(
+            criarNotificacaoStatusPedido(numeroPedido, pedido.getCliente(), statusPedido.getValue()));
 
     return pedidoAtualizado;
   }
+
 
   @Transactional
   public Pedido atualizarStatusPagamentoPedido(String numeroPedido, StatusPagamento statusPagamento) {
@@ -46,8 +51,8 @@ public class AtualizacaoDePedido {
 
     Pedido pedidoAtualizado = pedidoRepository.atualizarPedido(pedido);
 
-    notificacaoService.enviarParaFilaDeNotificacao(criarNotificacao(numeroPedido, pedido.getCliente(), statusPedido,
-            pedido.getPagamento()));
+    notificacaoService.enviarParaFilaDeNotificacao(criarNotificacaoStatusPagamento(
+            numeroPedido, pedido.getCliente(),pedido.getPagamento()));
 
     return pedidoAtualizado;
   }

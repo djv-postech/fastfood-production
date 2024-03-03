@@ -1,5 +1,20 @@
 package com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pedido;
 
 public enum StatusPedido {
-    PRONTO, EM_PREPARACAO,  RECEBIDO, FINALIZADO
+
+    PRONTO("pronto"),
+    EM_PREPARACAO("em preparação"),
+    RECEBIDO("recebido"),
+    FINALIZADO("finalizado");
+
+
+    private final String value;
+
+    StatusPedido(String value) {
+        this.value = value;
+    }
+
+    public String getValue() {
+        return value;
+    }
 }
