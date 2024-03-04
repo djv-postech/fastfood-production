@@ -18,7 +18,7 @@ services:
     volumes:
       - db:/data/db
     ports:
-      - "3306:3306"
+      - "27017:27017"
     networks:
       - my_net
 

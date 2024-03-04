@@ -17,6 +17,7 @@ public class ProducaoAMQPConfiguration {
     public static final String PEDIDO_PRODUCAO_COZINHA_QUEUE = "queue.pedido_producao_cozinha";
     public static final String PEDIDO_PRODUCAO_DLX = "dlx.pedido_producao";
     public static final String PEDIDO_PRODUCAO_COZINHA_DLQ = "dlq.pedido_producao_cozinha";
+    public static final String NOTIFICACAO_EX = "ex.notificacao";
 
 
     @Bean
