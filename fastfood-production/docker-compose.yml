@@ -1,11 +1,11 @@
 version: '3'
 services:
-#  rabbitmq:
-#    image: rabbitmq:latest
-#    ports:
-#      - "5672:5672"
-#    networks:
-#      - my_net
+  rabbitmq:
+    image: rabbitmq:latest
+    ports:
+      - "5672:5672"
+    networks:
+      - my_net
 
 
   mongodb:
@@ -23,15 +23,15 @@ services:
       - my_net
 
 
-#  api:
-#    image: soatpostech/fastfood-production:latest
-#    ports:
-#      - "8082:8082"
-#    depends_on:
-#      - mongodb
-#      - rabbitmq
-#    networks:
-#      - my_net
+  api:
+    image: soatpostech/fastfood-production:latest
+    ports:
+      - "8082:8082"
+    depends_on:
+      - mongodb
+      - rabbitmq
+    networks:
+      - my_net
 
 networks:
   my_net:
