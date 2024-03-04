@@ -1,13 +1,10 @@
 package com.fiap.postech.techchallenge.fastfoodproduction.core.domain.usecases.pedido;
 
-import com.fiap.postech.techchallenge.fastfoodproduction.application.records.DadosNotificacao;
-import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.cliente.Cliente;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pagamento.Pagamento;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pagamento.StatusPagamento;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pedido.Pedido;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pedido.PedidoRepository;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pedido.StatusPedido;
-import com.fiap.postech.techchallenge.fastfoodproduction.infra.NotificacaoBuilder;
 import org.springframework.transaction.annotation.Transactional;
 
 import static com.fiap.postech.techchallenge.fastfoodproduction.infra.NotificacaoBuilder.criarNotificacaoStatusPagamento;

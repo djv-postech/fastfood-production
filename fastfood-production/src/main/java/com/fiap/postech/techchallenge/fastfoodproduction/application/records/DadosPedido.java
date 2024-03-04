@@ -46,22 +46,20 @@ public record DadosPedido(@JsonInclude(NON_NULL) String id,
     public Pedido convertToPedido() {
         if(cliente != null){
             return new Pedido(new Cliente(cliente.nome(), new CPF(cliente.cpf().getNumero()), new Email(cliente.email().getEndereco())), buildProdutos(produtos), valorTotal,
-    //                new Pagamento(
-    //                        pagamento.dataPagamento(),
-    //                        pagamento.statusPagamento(),
-    //                        pagamento.tipoPagamento(),
-    //                        pagamento.totalPagamento()
-                          new Pagamento()
-                    , status, dataCriacaoPedido);
+                    new Pagamento(
+                            pagamento.dataPagamento(),
+                            pagamento.statusPagamento(),
+                            pagamento.tipoPagamento(),
+                            pagamento.totalPagamento()
+                    ), status, dataCriacaoPedido);
         }
         return new Pedido(buildProdutos(produtos), valorTotal,
-                //                new Pagamento(
-                //                        pagamento.dataPagamento(),
-                //                        pagamento.statusPagamento(),
-                //                        pagamento.tipoPagamento(),
-                //                        pagamento.totalPagamento()
-                new Pagamento()
-                , status, dataCriacaoPedido);
+                                new Pagamento(
+                                        pagamento.dataPagamento(),
+                                        pagamento.statusPagamento(),
+                                        pagamento.tipoPagamento(),
+                                        pagamento.totalPagamento()),
+                status, dataCriacaoPedido);
     }
 
     private List<Produto> buildProdutos(List<DadosProduto> dadosProdutos) {
