@@ -20,8 +20,12 @@ class AtualizacaoDePedidoTest {
     @Mock
     private PedidoRepository pedidoRepository;
 
+    @Mock
+    private NotificacaoService notificacaoService;
+
     @InjectMocks
     private AtualizacaoDePedido atualizacaoDePedido;
+
 
     @Test
     public void devePermitirAtualizarStatusDoPedido(){

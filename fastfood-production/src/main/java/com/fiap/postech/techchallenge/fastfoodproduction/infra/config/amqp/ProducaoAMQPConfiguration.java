@@ -18,7 +18,8 @@ public class ProducaoAMQPConfiguration {
     public static final String PEDIDO_PRODUCAO_DLX = "dlx.pedido_producao";
     public static final String PEDIDO_PRODUCAO_COZINHA_DLQ = "dlq.pedido_producao_cozinha";
     public static final String NOTIFICACAO_EX = "ex.notificacao";
-
+    public static final String STATUS_PAGAMENTO = "queue.status_pagamento";
+    public static final String STATUS_PEDIDO = "queue.status_pedido";
 
     @Bean
     public RabbitAdmin criarAdminConfig(ConnectionFactory connectionFactory){
