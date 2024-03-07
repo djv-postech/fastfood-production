@@ -55,6 +55,18 @@ public class PedidoHelper {
         return new DadosCadastroPagamento(TipoPagamento.CARTAO, BigDecimal.TEN, LocalDateTime.now(), StatusPagamento.APROVADO);
     }
 
+    public static DadosStatusPagamento dadosStatusPagamento() {
+        return new DadosStatusPagamento("123456", StatusPagamento.APROVADO);
+    }
+
+    public static DadosStatusPedido dadosStatusPedido() {
+        return new DadosStatusPedido("123456", StatusPedido.EM_PREPARACAO);
+    }
+
+    public static DadosNotificacao dadosNotificacao() {
+        return new DadosNotificacao("Cliente", "email@email.com", "Seu pedido está pronto!");
+    }
+
     private static List<DadosCadastroProduto> dadosCadastroProduto() {
         DadosCadastroProduto dadosCadastroProduto = new DadosCadastroProduto(
                 "Teste", "Descricao", BigDecimal.TEN, 10, Categoria.LANCHE);
@@ -75,6 +87,13 @@ public class PedidoHelper {
                 new DadosCliente("Test", new CPF("333.333.333-33"), new Email("teste@gmail.com")),
                         new DadosPagamento("1", BigDecimal.TEN, TipoPagamento.CARTAO, LocalDateTime.now(), StatusPagamento.APROVADO),
              StatusPedido.PRONTO, LocalDateTime.now(), BigDecimal.TEN, "");
+    }
+
+    public static DadosPedido criarDadosPedidoSemClienteIdentificado(){
+        return new DadosPedido("1", List.of(new DadosProduto("1", "BigMac", "Descricao Big", BigDecimal.TEN, Categoria.LANCHE, 1)),
+                null,
+                new DadosPagamento("1", BigDecimal.TEN, TipoPagamento.CARTAO, LocalDateTime.now(), StatusPagamento.APROVADO),
+                StatusPedido.PRONTO, LocalDateTime.now(), BigDecimal.TEN, "");
     }
 }
 

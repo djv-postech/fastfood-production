@@ -62,5 +62,4 @@ public record DadosPedido(@JsonInclude(NON_NULL) String numeroPedido,
         return dadosProdutos.stream().map(cadastroProduto -> new Produto(cadastroProduto.id(), cadastroProduto.nome(), cadastroProduto.descricao(), cadastroProduto.preco(), cadastroProduto.quantidade(), cadastroProduto.categoria())).collect(Collectors.toList());
     }
 
-
 }

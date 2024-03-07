@@ -16,15 +16,4 @@ public class DadosNotificacao {
         this.texto = texto;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getTexto() {
-        return texto;
-    }
 }

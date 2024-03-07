@@ -82,7 +82,7 @@ class PedidoProducaoControllerTest {
     @Test
     public void devePermitirCadastrarUmPedido() throws Exception {
         // Dado
-        DadosPedido dadosCadastroPedido = PedidoHelper.criarDadosPedido();
+        DadosPedido dadosCadastroPedido = PedidoHelper.criarDadosPedidoSemClienteIdentificado();
         Pedido pedido = dadosCadastroPedido.convertToPedido();
 
         given(cadastroDePedido.cadastrarPedido(any(Pedido.class)))
