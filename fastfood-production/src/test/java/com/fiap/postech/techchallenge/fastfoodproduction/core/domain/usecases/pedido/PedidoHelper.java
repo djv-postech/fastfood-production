@@ -59,10 +59,6 @@ public class PedidoHelper {
         return new DadosStatusPagamento("123456", StatusPagamento.APROVADO);
     }
 
-    public static DadosStatusPedido dadosStatusPedido() {
-        return new DadosStatusPedido("123456", StatusPedido.EM_PREPARACAO);
-    }
-
     public static DadosNotificacao dadosNotificacao() {
         return new DadosNotificacao("Cliente", "email@email.com", "Seu pedido está pronto!");
     }
