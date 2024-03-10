@@ -21,7 +21,7 @@ public class AtualizacaoStatusDePagamentoListener {
 
     @RabbitListener(queues = STATUS_PAGAMENTO)
     public void atualizarStatusDePagamento(DadosStatusPagamento dadosStatusPagamento) {
-        log.info("Atualização de pagamento recebida. Payload: {}", dadosStatusPagamento);
+        log.info("Atualização de pagamento recebida! Payload: {}", dadosStatusPagamento);
         atualizacaoDePedido.atualizarStatusPagamentoPedido(dadosStatusPagamento.numeroPedido(), dadosStatusPagamento.statusPagamento());
 
     }
