@@ -2,6 +2,7 @@ package com.fiap.postech.techchallenge.fastfoodproduction.infra;
 
 import com.fiap.postech.techchallenge.fastfoodproduction.application.records.DadosNotificacao;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.cliente.Cliente;
+import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.notificacao.Notificacao;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pagamento.Pagamento;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pagamento.StatusPagamento;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pedido.StatusPedido;
@@ -14,7 +15,7 @@ public class NotificacaoBuilder {
     public static DadosNotificacao criarNotificacaoStatusPedido(String numeroPedido, Cliente cliente, String statusPedido) {
 
         if (Objects.isNull(cliente)) {
-            return new DadosNotificacao(textoStatusPedidoSemIdentificacao(numeroPedido, statusPedido));
+            return new DadosNotificacao(new Notificacao(textoStatusPedidoSemIdentificacao(numeroPedido, statusPedido)));
         }
 
         return new DadosNotificacao(cliente.getNome(),
@@ -42,8 +43,8 @@ public class NotificacaoBuilder {
                                                                    Pagamento pagamento) {
 
         if(Objects.isNull(cliente)){
-            return new DadosNotificacao(textoStatusPagamentoSemIdentificacao(
-                    numeroPedido, pagamento.getStatusPagamento()));
+            return new DadosNotificacao(new Notificacao(textoStatusPagamentoSemIdentificacao(
+                    numeroPedido, pagamento.getStatusPagamento())));
         }
 
         return new DadosNotificacao(cliente.getNome(), cliente.getEmail().getEndereco(),

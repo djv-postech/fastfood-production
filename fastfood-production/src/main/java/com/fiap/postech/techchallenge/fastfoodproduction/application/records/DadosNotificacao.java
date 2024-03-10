@@ -1,19 +1,15 @@
 package com.fiap.postech.techchallenge.fastfoodproduction.application.records;
 
-public class DadosNotificacao {
+import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.notificacao.Notificacao;
 
-    private String nome;
-    private String email;
-    private String texto;
+public record DadosNotificacao (
 
-    public DadosNotificacao(String nome, String email, String texto) {
-        this.nome = nome;
-        this.email = email;
-        this.texto = texto;
+     String nome,
+     String email,
+     String texto) {
+
+    public DadosNotificacao(Notificacao notificacao) {
+        this(notificacao.getNome(), notificacao.getEmail(), notificacao.getTexto());
+
     }
-
-    public DadosNotificacao(String texto) {
-        this.texto = texto;
-    }
-
 }
