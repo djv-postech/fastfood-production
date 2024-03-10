@@ -56,4 +56,3 @@ Exemplo Payload :
 ![Fluxo recebimento_de_pedido](imagens/fluxo-recebimento-de-pedido.png)
 
 <br>
-
