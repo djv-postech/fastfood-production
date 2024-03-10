@@ -58,6 +58,21 @@ public class Pedido {
     this.dataCriacaoPedido = dataCriacaoPedido;
   }
 
+  public Pedido(
+          String numeroPedido,
+          List<Produto> produtos,
+          BigDecimal valorTotal,
+          Pagamento pagamento,
+          StatusPedido statusPedido,
+          LocalDateTime dataCriacaoPedido) {
+    this.numeroPedido = numeroPedido;
+    this.produtos = produtos;
+    this.valorTotal = valorTotal;
+    this.pagamento = pagamento;
+    this.statusPedido = statusPedido;
+    this.dataCriacaoPedido = dataCriacaoPedido;
+  }
+
     public Pedido(List<Produto> produtos, BigDecimal valorTotal, Pagamento pagamento, StatusPedido status, LocalDateTime dataCriacaoPedido) {
       this.produtos = produtos;
       this.valorTotal = valorTotal;
@@ -65,18 +80,6 @@ public class Pedido {
       this.statusPedido = status;
       this.dataCriacaoPedido = dataCriacaoPedido;
     }
-
-  public Pedido(Cliente cliente, List<Produto> produtos, BigDecimal valorTotal, Pagamento pagamento,
-                StatusPedido status, LocalDateTime dataCriacaoPedido) {
-
-    this.cliente = cliente;
-    this.produtos = produtos;
-    this.valorTotal = valorTotal;
-    this.pagamento = pagamento;
-    this.statusPedido = status;
-    this.dataCriacaoPedido = dataCriacaoPedido;
-
-  }
 
 
   public String getNumeroPedido() {
