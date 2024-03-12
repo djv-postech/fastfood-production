@@ -56,3 +56,8 @@ Exemplo Payload :
 ![Fluxo recebimento_de_pedido](imagens/fluxo-recebimento-de-pedido.png)
 
 <br>
+
+### [Grupo 7](#grupo-7)
+***
+* Jackson Carlos Leite Ramalho
+* Valqueline Nicácio da Silva
