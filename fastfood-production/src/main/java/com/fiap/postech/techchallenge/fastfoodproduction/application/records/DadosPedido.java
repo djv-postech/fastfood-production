@@ -46,7 +46,7 @@ public record DadosPedido(@JsonInclude(NON_NULL) String numeroPedido,
     public Pedido convertToPedido() {
         if(cliente != null){
             return new Pedido(numeroPedido, new Cliente(cliente.nome(), new CPF(cliente.cpf().getNumero()), new Email(cliente.email().getEndereco())), buildProdutos(produtos), valorTotal,
-                    new Pagamento(pagamento.dataPagamento(), pagamento.statusPagamento(), pagamento.tipoPagamento(), pagamento.totalPagamento()), status, dataCriacaoPedido);
+                    new Pagamento(pagamento.dataPagamento(), pagamento.statusPagamento(), pagamento.tipoPagamento(), pagamento.totalPagamento()), status, dataCriacaoPedido, qrCode);
         }
         return new Pedido(numeroPedido, buildProdutos(produtos), valorTotal,
                                 new Pagamento(
@@ -54,7 +54,7 @@ public record DadosPedido(@JsonInclude(NON_NULL) String numeroPedido,
                                         pagamento.statusPagamento(),
                                         pagamento.tipoPagamento(),
                                         pagamento.totalPagamento()),
-                status, dataCriacaoPedido);
+                status, dataCriacaoPedido, qrCode);
 
     }
 
