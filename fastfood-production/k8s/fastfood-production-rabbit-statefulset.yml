@@ -16,9 +16,10 @@ spec:
     spec:
       containers:
         - name: fastfood-production-rabbit-container
-          image: rabbitmq:latest
+          image: rabbitmq:management
           ports:
             - containerPort: 5672
+            - containerPort: 15672
           env:
             - name: RABBITMQ_DEFAULT_USER
               valueFrom:
