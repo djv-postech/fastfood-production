@@ -12,119 +12,104 @@ import java.util.List;
 
 public class Pedido {
 
-  private String numeroPedido;
-  private Cliente cliente;
-  private List<Produto> produtos;
-  private BigDecimal valorTotal;
-  private Pagamento pagamento;
-  private StatusPedido statusPedido;
-  private String qrCode;
-  private LocalDateTime dataCriacaoPedido;
+    private String numeroPedido;
+    private Cliente cliente;
+    private List<Produto> produtos;
+    private BigDecimal valorTotal;
+    private Pagamento pagamento;
+    private StatusPedido statusPedido;
+    private String qrCode;
+    private LocalDateTime dataCriacaoPedido;
 
-  public Pedido(
-          String numeroPedido,
-          Cliente cliente,
-          List<Produto> produtos,
-          BigDecimal valorTotal,
-          Pagamento pagamento,
-          StatusPedido statusPedido,
-          LocalDateTime dataCriacaoPedido,
-          String qrCode) {
-    this.numeroPedido = numeroPedido;
-    this.cliente = cliente;
-    this.produtos = produtos;
-    this.valorTotal = valorTotal;
-    this.pagamento = pagamento;
-    this.statusPedido = statusPedido;
-    this.qrCode = qrCode;
-    this.dataCriacaoPedido = dataCriacaoPedido;
+    public Pedido(
+            String numeroPedido,
+            Cliente cliente,
+            List<Produto> produtos,
+            BigDecimal valorTotal,
+            Pagamento pagamento,
+            StatusPedido statusPedido,
+            LocalDateTime dataCriacaoPedido,
+            String qrCode) {
+        this.numeroPedido = numeroPedido;
+        this.cliente = cliente;
+        this.produtos = produtos;
+        this.valorTotal = valorTotal;
+        this.pagamento = pagamento;
+        this.statusPedido = statusPedido;
+        this.dataCriacaoPedido = dataCriacaoPedido;
+        this.qrCode = qrCode;
 
-  }
-
-  public Pedido(
-          String numeroPedido,
-          Cliente cliente,
-          List<Produto> produtos,
-          BigDecimal valorTotal,
-          Pagamento pagamento,
-          StatusPedido statusPedido,
-          LocalDateTime dataCriacaoPedido) {
-    this.numeroPedido = numeroPedido;
-    this.cliente = cliente;
-    this.produtos = produtos;
-    this.valorTotal = valorTotal;
-    this.pagamento = pagamento;
-    this.statusPedido = statusPedido;
-    this.dataCriacaoPedido = dataCriacaoPedido;
-  }
-
-    public Pedido(List<Produto> produtos, BigDecimal valorTotal, Pagamento pagamento, StatusPedido status, LocalDateTime dataCriacaoPedido) {
-      this.produtos = produtos;
-      this.valorTotal = valorTotal;
-      this.pagamento = pagamento;
-      this.statusPedido = status;
-      this.dataCriacaoPedido = dataCriacaoPedido;
     }
 
-  public Pedido(Cliente cliente, List<Produto> produtos, BigDecimal valorTotal, Pagamento pagamento,
-                StatusPedido status, LocalDateTime dataCriacaoPedido) {
 
-    this.cliente = cliente;
-    this.produtos = produtos;
-    this.valorTotal = valorTotal;
-    this.pagamento = pagamento;
-    this.statusPedido = status;
-    this.dataCriacaoPedido = dataCriacaoPedido;
+    public Pedido(
+            String numeroPedido,
+            List<Produto> produtos,
+            BigDecimal valorTotal,
+            Pagamento pagamento,
+            StatusPedido statusPedido,
+            LocalDateTime dataCriacaoPedido,
+            String qrCode) {
+        this.numeroPedido = numeroPedido;
+        this.produtos = produtos;
+        this.valorTotal = valorTotal;
+        this.pagamento = pagamento;
+        this.statusPedido = statusPedido;
+        this.dataCriacaoPedido = dataCriacaoPedido;
+        this.qrCode = qrCode;
+    }
 
-  }
+    public Pedido(List<Produto> produtos, BigDecimal valorTotal, Pagamento pagamento, StatusPedido status, LocalDateTime dataCriacaoPedido) {
+        this.produtos = produtos;
+        this.valorTotal = valorTotal;
+        this.pagamento = pagamento;
+        this.statusPedido = status;
+        this.dataCriacaoPedido = dataCriacaoPedido;
+    }
 
 
-  public String getNumeroPedido() {
-    return numeroPedido;
-  }
+    public String getNumeroPedido() {
+        return numeroPedido;
+    }
 
-  public List<Produto> getProdutos() {
-    return produtos;
-  }
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
 
-  public Cliente getCliente() {
-    return cliente;
-  }
+    public Cliente getCliente() {
+        return cliente;
+    }
 
-  public BigDecimal getValorTotal() {
-    return valorTotal;
-  }
+    public BigDecimal getValorTotal() {
+        return valorTotal;
+    }
 
-  public Pagamento getPagamento() {
-    return pagamento;
-  }
+    public Pagamento getPagamento() {
+        return pagamento;
+    }
 
-  public StatusPedido getStatusPedido() {
-    return statusPedido;
-  }
+    public StatusPedido getStatusPedido() {
+        return statusPedido;
+    }
 
-  public LocalDateTime getDataCriacaoPedido() {
-    return dataCriacaoPedido;
-  }
+    public LocalDateTime getDataCriacaoPedido() {
+        return dataCriacaoPedido;
+    }
 
-  public String getQrCode() {
-    return qrCode;
-  }
+    public String getQrCode() {
+        return qrCode;
+    }
 
-  public void setPagamento(Pagamento pagamento) {
-    this.pagamento = pagamento;
-  }
+    public void setPagamento(Pagamento pagamento) {
+        this.pagamento = pagamento;
+    }
 
-  public void setStatus(StatusPedido statusPedido) {
-    this.statusPedido = statusPedido;
-  }
+    public void setStatus(StatusPedido statusPedido) {
+        this.statusPedido = statusPedido;
+    }
 
-  public void setQrCode(String qrCode) {
-    this.qrCode = qrCode;
-  }
-
-  public void setNumeroPedido(String numeroPedido) {
-    this.numeroPedido = numeroPedido;
-  }
+    public void setNumeroPedido(String numeroPedido) {
+        this.numeroPedido = numeroPedido;
+    }
 
 }

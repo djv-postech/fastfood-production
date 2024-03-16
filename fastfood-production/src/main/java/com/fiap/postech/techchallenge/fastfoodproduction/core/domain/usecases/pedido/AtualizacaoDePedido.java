@@ -42,7 +42,7 @@ public class AtualizacaoDePedido {
     StatusPedido statusPedido =
             statusPagamento.equals(StatusPagamento.APROVADO)
             ? StatusPedido.EM_PREPARACAO
-            : pedido.getStatusPedido();
+            : StatusPedido.CANCELADO;
     pedido.setPagamento(pagamento);
     pedido.setStatus(statusPedido);
 

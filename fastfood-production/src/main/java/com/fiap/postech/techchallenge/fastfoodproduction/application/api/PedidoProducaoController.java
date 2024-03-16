@@ -2,7 +2,6 @@ package com.fiap.postech.techchallenge.fastfoodproduction.application.api;
 
 import com.fiap.postech.techchallenge.fastfoodproduction.application.records.DadosCadastroPedido;
 import com.fiap.postech.techchallenge.fastfoodproduction.application.records.DadosPedido;
-import com.fiap.postech.techchallenge.fastfoodproduction.application.records.DadosProduto;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pagamento.StatusPagamento;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pedido.Pedido;
 import com.fiap.postech.techchallenge.fastfoodproduction.core.domain.entities.pedido.StatusPedido;

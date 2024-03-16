@@ -45,22 +45,21 @@ public record DadosPedido(@JsonInclude(NON_NULL) String numeroPedido,
 
     public Pedido convertToPedido() {
         if(cliente != null){
-            return new Pedido(new Cliente(cliente.nome(), new CPF(cliente.cpf().getNumero()), new Email(cliente.email().getEndereco())), buildProdutos(produtos), valorTotal,
-                    new Pagamento(pagamento.dataPagamento(), pagamento.statusPagamento(), pagamento.tipoPagamento(), pagamento.totalPagamento()), status, dataCriacaoPedido);
+            return new Pedido(numeroPedido, new Cliente(cliente.nome(), new CPF(cliente.cpf().getNumero()), new Email(cliente.email().getEndereco())), buildProdutos(produtos), valorTotal,
+                    new Pagamento(pagamento.dataPagamento(), pagamento.statusPagamento(), pagamento.tipoPagamento(), pagamento.totalPagamento()), status, dataCriacaoPedido, qrCode);
         }
-        return new Pedido(buildProdutos(produtos), valorTotal,
+        return new Pedido(numeroPedido, buildProdutos(produtos), valorTotal,
                                 new Pagamento(
                                         pagamento.dataPagamento(),
                                         pagamento.statusPagamento(),
                                         pagamento.tipoPagamento(),
                                         pagamento.totalPagamento()),
-                status, dataCriacaoPedido);
+                status, dataCriacaoPedido, qrCode);
 
     }
 
     private List<Produto> buildProdutos(List<DadosProduto> dadosProdutos) {
         return dadosProdutos.stream().map(cadastroProduto -> new Produto(cadastroProduto.id(), cadastroProduto.nome(), cadastroProduto.descricao(), cadastroProduto.preco(), cadastroProduto.quantidade(), cadastroProduto.categoria())).collect(Collectors.toList());
     }
-
 
 }
